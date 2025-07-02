@@ -106,6 +106,9 @@ const DeviceDetail = () => {
             <Button variant="ghost" onClick={() => navigate('/alerts')}>
               View Alerts
             </Button>
+            <Button variant="ghost" onClick={() => navigate('/crash-detection')}>
+              SOS Controls
+            </Button>
             <Button variant="outline" onClick={() => navigate('/dashboard/org')}>
               Fleet Dashboard
             </Button>

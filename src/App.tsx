@@ -10,6 +10,11 @@ import DashboardIndividual from "./pages/DashboardIndividual";
 import DashboardOrg from "./pages/DashboardOrg";
 import DeviceDetail from "./pages/DeviceDetail";
 import AlertsPage from "./pages/AlertsPage";
+import CrashDetectionPage from "./pages/CrashDetectionPage";
+import ARNavigationPage from "./pages/ARNavigationPage";
+import MaintenancePage from "./pages/MaintenancePage";
+import GamificationPage from "./pages/GamificationPage";
+import CommunityPage from "./pages/CommunityPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +33,11 @@ const App = () => (
           <Route path="/dashboard/org" element={<DashboardOrg />} />
           <Route path="/dashboard/org/:id" element={<DeviceDetail />} />
           <Route path="/alerts" element={<AlertsPage />} />
+          <Route path="/crash-detection" element={<CrashDetectionPage />} />
+          <Route path="/ar-navigation" element={<ARNavigationPage />} />
+          <Route path="/maintenance" element={<MaintenancePage />} />
+          <Route path="/gamification" element={<GamificationPage />} />
+          <Route path="/community" element={<CommunityPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
