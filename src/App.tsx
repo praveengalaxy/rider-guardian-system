@@ -16,6 +16,8 @@ import MaintenancePage from "./pages/MaintenancePage";
 import GamificationPage from "./pages/GamificationPage";
 import CommunityPage from "./pages/CommunityPage";
 import NotFound from "./pages/NotFound";
+import SimulationPanel from "./components/SimulationPanel";
+import RegisterRider from "./pages/RegisterRider";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +40,8 @@ const App = () => (
           <Route path="/maintenance" element={<MaintenancePage />} />
           <Route path="/gamification" element={<GamificationPage />} />
           <Route path="/community" element={<CommunityPage />} />
+          <Route path="/manual-trigger" element={<SimulationPanel />} />
+          <Route path="/org/register-rider" element={<RegisterRider />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

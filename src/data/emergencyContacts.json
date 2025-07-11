@@ -1,0 +1,23 @@
+{
+  "emergencyContacts": [
+    {
+      "id": "1",
+      "name": "Emergency Contact",
+      "relationship": "Primary",
+      "phone": "+918660825177",
+      "email": "praveen.hebbal2004@gmail.com",
+      "isPrimary": true
+    }
+  ],
+  "emergencyServices": {
+    "police": "911",
+    "ambulance": "911",
+    "fire": "911",
+    "roadsideAssistance": "+1 (800) 555-0123"
+  },
+  "settings": {
+    "autoNotify": true,
+    "notificationDelay": 30,
+    "maxContacts": 5
+  }
+} 

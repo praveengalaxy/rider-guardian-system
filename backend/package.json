@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "1. Install dependencies:\r    ```sh\r    npm install\r    ```\r 2. Start the server:\r    ```sh\r    node index.js\r    ```\r    The server runs on port 4000 by default.",
+  "dependencies": {
+    "@react-google-maps/api": "^2.20.7",
+    "@serialport/parser-readline": "^12.0.0",
+    "axios": "^1.10.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "leaflet": "^1.9.4",
+    "nodemailer": "^6.10.1",
+    "react-leaflet": "^5.0.0",
+    "serialport": "^12.0.0",
+    "twilio": "^4.23.0"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.19"
+  }
+}

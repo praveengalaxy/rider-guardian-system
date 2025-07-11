@@ -47,6 +47,9 @@ const LandingPage = () => {
             <Button variant="hero" onClick={() => navigate('/register')}>
               Get Started
             </Button>
+            <Button variant="outline" onClick={() => navigate('/manual-trigger')}>
+              Manual Trigger
+            </Button>
           </nav>
         </div>
       </header>

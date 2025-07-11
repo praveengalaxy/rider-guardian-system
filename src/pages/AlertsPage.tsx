@@ -148,12 +148,7 @@ const AlertsPage = () => {
             )}
           </div>
           <nav className="flex items-center space-x-4">
-            <Button variant="ghost" onClick={() => navigate('/dashboard/org')}>
-              Fleet Dashboard
-            </Button>
-            <Button variant="outline" onClick={() => navigate('/')}>
-              Home
-            </Button>
+            <Button variant="outline" onClick={() => navigate('/')}>Home</Button>
           </nav>
         </div>
       </header>

@@ -98,6 +98,11 @@ const DashboardOrg = () => {
   const warningCount = vehicles.filter(v => v.status === 'warning').length;
   const alertCount = vehicles.filter(v => v.status === 'alert').length;
 
+  // Add mock status for new features to each vehicle
+  const getCrashStatus = (vehicle) => vehicle.status === 'alert'; // Example: alert means crash
+  const getRashStatus = (vehicle) => vehicle.heartRate > 100; // Example: high heart rate = rash
+  const getGeofenceStatus = (vehicle) => vehicle.location !== 'Downtown District' ? 'Outside Safe Zone' : 'Inside Safe Zone';
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -114,6 +119,12 @@ const DashboardOrg = () => {
           <nav className="flex items-center space-x-4">
             <Button variant="ghost" onClick={() => navigate('/alerts')}>
               Alerts ({alertCount + warningCount})
+            </Button>
+            <Button variant="outline" onClick={() => navigate('/manual-trigger')}>
+              Manual Trigger
+            </Button>
+            <Button variant="outline" onClick={() => navigate('/org/register-rider')}>
+              Register New Rider
             </Button>
             <Button variant="outline" onClick={() => navigate('/')}>
               Logout
@@ -192,42 +203,57 @@ const DashboardOrg = () => {
               onClick={() => navigate(`/dashboard/org/${vehicle.id}`)}
             >
               <CardContent className="pt-6">
-                <div className="grid lg:grid-cols-6 gap-4 items-center">
+                <div className="grid lg:grid-cols-9 gap-4 items-center">
                   {/* Vehicle Info */}
                   <div className="lg:col-span-2">
                     <div className="flex items-center space-x-3">
                       <div className="flex flex-col">
                         <span className="font-semibold">{vehicle.rider}</span>
-                        <span className="text-sm text-muted-foreground">{vehicle.id}</span>
                         <span className="text-xs text-muted-foreground">{vehicle.model}</span>
+                        <span className="text-xs text-muted-foreground">{vehicle.id}</span>
                       </div>
                     </div>
                   </div>
-
-                  {/* Status */}
-                  <div className="flex items-center space-x-2">
+                  {/* Status Badges */}
+                  <div className="flex flex-col items-center">
                     {getStatusBadge(vehicle.status)}
-                    {vehicle.alerts > 0 && (
-                      <Badge variant="destructive">{vehicle.alerts} Alert{vehicle.alerts > 1 ? 's' : ''}</Badge>
-                    )}
                   </div>
-
-                  {/* Vitals */}
-                  <div className="text-center">
+                  {/* Heart Rate */}
+                  <div className="flex flex-col items-center">
                     <div className="text-lg font-bold">{vehicle.heartRate || '--'}</div>
                     <div className="text-xs text-muted-foreground">Heart Rate</div>
                   </div>
-
-                  {/* Speed & Battery */}
-                  <div className="text-center">
+                  {/* Speed */}
+                  <div className="flex flex-col items-center">
                     <div className="text-lg font-bold">{vehicle.speed} km/h</div>
-                    <div className="text-xs text-muted-foreground">{vehicle.batteryLevel}% Battery</div>
+                    <div className="text-xs text-muted-foreground">Speed</div>
                   </div>
-
-                  {/* Location & Last Update */}
-                  <div className="text-right">
-                    <div className="font-medium">{vehicle.location}</div>
-                    <div className="text-xs text-muted-foreground">{vehicle.lastUpdate}</div>
+                  {/* Crash Detection */}
+                  <div className="flex flex-col items-center">
+                    <Badge className={getCrashStatus(vehicle) ? 'status-danger' : 'status-safe'}>
+                      {getCrashStatus(vehicle) ? 'Crash' : 'Normal'}
+                    </Badge>
+                    <div className="text-xs text-muted-foreground">Crash</div>
+                  </div>
+                  {/* Rash Driving */}
+                  <div className="flex flex-col items-center">
+                    <Badge className={getRashStatus(vehicle) ? 'status-warning' : 'status-safe'}>
+                      {getRashStatus(vehicle) ? 'Rash' : 'Normal'}
+                    </Badge>
+                    <div className="text-xs text-muted-foreground">Rash</div>
+                  </div>
+                  {/* Geofencing */}
+                  <div className="flex flex-col items-center">
+                    <Badge className={getGeofenceStatus(vehicle) === 'Inside Safe Zone' ? 'status-safe' : 'status-danger'}>
+                      {getGeofenceStatus(vehicle)}
+                    </Badge>
+                    <div className="text-xs text-muted-foreground">Geofence</div>
+                  </div>
+                  {/* Alerts */}
+                  <div className="flex flex-col items-center">
+                    {vehicle.alerts > 0 && (
+                      <Badge variant="destructive">{vehicle.alerts} Alert{vehicle.alerts > 1 ? 's' : ''}</Badge>
+                    )}
                   </div>
                 </div>
               </CardContent>
