@@ -165,15 +165,9 @@ npm run dev
 
 ---
 
-## License
-
-MIT (or specify your license)
-
----
-
 ## Credits
 
-- Developed by Praveen P Hebbal and contributors
+- Developed by Praveen P HebbAL
 - For questions, contact: praveen.hebbal2004@gmail.com
 
 ---
